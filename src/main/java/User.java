@@ -1,5 +1,8 @@
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@NoArgsConstructor
 @Entity
 public class User extends BaseEntityCreateUpdateTime {
     @Id
@@ -12,4 +15,25 @@ public class User extends BaseEntityCreateUpdateTime {
     private int age;
     @Embedded
     private Address address;
+
+    public User(String name, Integer age, String city, String street, String zipCode) {
+        this.name = name;
+        this.age = age;
+        this.address = new Address(city, street, zipCode);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+        update();
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+        update();
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+        update();
+    }
 }
