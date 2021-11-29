@@ -1,8 +1,7 @@
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-public class User {
+public class User extends BaseEntityCreateUpdateTime {
     @Id
     @Column(name = "USER_ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,10 +10,6 @@ public class User {
     private String name;
     @Column
     private int age;
-    @Column
-    private String address;
-    @Column(name = "CREATE_DATE")
-    private LocalDate create;
-    @Column(name = "UPDATE_DATE")
-    private LocalDate update;
+    @Embedded
+    private Address address;
 }
