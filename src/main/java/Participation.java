@@ -39,4 +39,8 @@ public class Participation {
         this.actor = actor;
         movie.getActors().add(this);
     }
+
+    public String getInfo() {
+        return actor.getInfo() + " " + rule;
+    }
 }

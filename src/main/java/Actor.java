@@ -18,4 +18,8 @@ public class Actor extends Person{
         this.height = height;
         this.instagram = instagram;
     }
+
+    public String getInfo() {
+        return super.getInfo() + " " + height + " " + instagram;
+    }
 }

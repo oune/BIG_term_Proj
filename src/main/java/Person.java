@@ -25,4 +25,8 @@ public class Person {
         this.name = name;
         this.birth = birth;
     }
+
+    public String getInfo() {
+        return id + " " + name + " " + birth;
+    }
 }

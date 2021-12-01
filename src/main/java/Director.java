@@ -20,6 +20,6 @@ public class Director extends Person{
     }
 
     public String getInfo() {
-        return "";
+        return super.getInfo() + " " + birthPlace;
     }
 }
