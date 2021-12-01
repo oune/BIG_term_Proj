@@ -20,8 +20,6 @@ public class JpaMain {
             Director director = new Director("토니", LocalDate.of(2020, 3, 20), "미국");
             Movie movie = new Movie("아이언맨", LocalDate.of(2020, 3, 20), Genre.Action, 40, director);
 
-
-
             em.persist(movie);
             em.persist(director);
 
