@@ -20,4 +20,9 @@ public class Person {
     private String name;
     @Column
     private LocalDate birth;
+
+    public Person(String name, LocalDate birth) {
+        this.name = name;
+        this.birth = birth;
+    }
 }

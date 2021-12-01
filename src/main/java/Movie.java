@@ -1,7 +1,16 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+@NoArgsConstructor
 @Entity
+@Getter
 public class Movie {
     @Id
     @Column(name = "MOVIE_ID")
@@ -16,4 +25,26 @@ public class Movie {
     private Genre genre;
     @Column
     private int time;
+    @ManyToOne
+    private Director director;
+    @OneToMany
+    @JoinColumn(name="PARTICIPATION_ID")
+    private List<Participation> actors = new ArrayList<Participation>();
+
+    public Movie(String title, LocalDate openDate, Genre genre, int time, Director director) {
+        this.title = title;
+        this.openDate = openDate;
+        this.genre = genre;
+        this.time = time;
+        this.director = director;
+    }
+
+    public String getInfo() {
+        return "제목 : " + title + "\n"
+                + "개봉일 : " + openDate + "\n"
+                + "장르 : " + genre + "\n"
+                + "러닝타임 : " + time + "\n"
+                + "감독 : " + director + "\n"
+                + "";
+    }
 }

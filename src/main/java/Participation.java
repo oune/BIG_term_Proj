@@ -20,7 +20,23 @@ public class Participation {
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
-    private Person person;
+    private Actor actor;
+
     @Column
     private String rule;
+
+    public Participation(Movie movie, Actor actor, String rule) {
+        this.movie = movie;
+        this.rule = rule;
+        setActor(actor);
+    }
+
+    private void setActor(Actor actor) {
+        if (this.actor != null) {
+            movie.getActors().remove(this);
+        }
+
+        this.actor = actor;
+        movie.getActors().add(this);
+    }
 }
