@@ -1,6 +1,9 @@
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @Entity
 public class Screening {
     @Id
@@ -18,6 +21,10 @@ public class Screening {
     @Column
     private LocalDateTime end;
 
-    public Screening() {
+    public Screening(Movie movie, Theater theater, LocalDateTime start, LocalDateTime end) {
+        this.movie = movie;
+        this.theater = theater;
+        this.start = start;
+        this.end = end;
     }
 }

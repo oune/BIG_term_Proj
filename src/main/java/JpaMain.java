@@ -19,6 +19,32 @@ public class JpaMain {
 
             Director director = new Director("토니", LocalDate.of(2020, 3, 20), "미국");
             Movie movie = new Movie("아이언맨", LocalDate.of(2020, 3, 20), Genre.Action, 40, director);
+
+
+
+            em.persist(movie);
+            em.persist(director);
+
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+
+        emf.close();
+    }
+
+    public static void num5() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+            tx.begin();
+
+            Director director = new Director("토니", LocalDate.of(2020, 3, 20), "미국");
+            Movie movie = new Movie("아이언맨", LocalDate.of(2020, 3, 20), Genre.Action, 40, director);
             Movie movie1 = new Movie("아이언맨2", LocalDate.of(2010, 3, 21), Genre.Action, 20, director);
             Movie movie2 = new Movie("아이언맨3", LocalDate.of(2010, 3, 21), Genre.Action, 20, director);
             Movie movie3 = new Movie("아이언맨4", LocalDate.of(2010, 3, 21), Genre.Action, 20, director);
@@ -53,9 +79,8 @@ public class JpaMain {
         } finally {
             em.close();
         }
-
-        emf.close();
     }
+
     public static void num4() {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
